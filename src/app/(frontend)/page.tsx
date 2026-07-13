@@ -1,4 +1,5 @@
 import { Navbar } from '../../components/Navbar/Navbar'
+import { Hero } from '../../components/hero/Hero'
 
 export default function HomePage() {
   return (
@@ -10,6 +11,8 @@ export default function HomePage() {
       }}
     >
       <Navbar />
+
+      <Hero />
 
       <section id="about" className="min-h-screen" />
       <section id="skills" className="min-h-screen" />
