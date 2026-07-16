@@ -18,16 +18,17 @@ export function HeroImage({
           height: 'clamp(200px, 40vw, 280px)',
         }}
       >
-        {/* Animated gradient ring */}
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background:
-              'linear-gradient(135deg, #818cf8, #22d3ee, #f472b6, #818cf8)',
-            backgroundSize: '300% 300%',
-            animation: 'gradient-shift 4s ease infinite',
-          }}
-        />
+      {/* Accent ring */}
+      <div
+        className="absolute inset-0 rounded-full"
+        style={{
+          border: '2px solid #22d3ee',
+          boxShadow: `
+            0 0 0 2px rgba(129,140,248,0.25),
+            0 0 40px rgba(129,140,248,0.12)
+          `,
+        }}
+      />
 
         {/* Inner background */}
         <div

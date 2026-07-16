@@ -1,5 +1,6 @@
 import { Navbar } from '../../components/Navbar/Navbar'
 import { Hero } from '../../components/hero/Hero'
+import { Skills } from '@/components/skills/Skills'
 
 export default function HomePage() {
   return (
@@ -14,8 +15,8 @@ export default function HomePage() {
 
       <Hero />
 
-      <section id="about" className="min-h-screen" />
-      <section id="skills" className="min-h-screen" />
+      <Skills />
+
       <section id="experience" className="min-h-screen" />
       <section id="projects" className="min-h-screen" />
       <section id="contact" className="min-h-screen" />
