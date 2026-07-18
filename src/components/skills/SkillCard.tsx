@@ -1,129 +1,117 @@
-import type { LucideIcon } from 'lucide-react'
+import {
+  Cloud,
+  Code2,
+  Database,
+  Monitor,
+  ShieldCheck,
+  Wrench,
+} from 'lucide-react'
+
+import type { Skill } from '@/types/payload-types'
 
 import { SkillChip } from './SkillChip'
 
+const ICONS = {
+  monitor: Monitor,
+  code: Code2,
+  cloud: Cloud,
+  database: Database,
+  tools: Wrench,
+  testing: ShieldCheck,
+} as const
+
 interface SkillCardProps {
-  category: string
-  icon: LucideIcon
-  items: string[]
+  skill: Skill
 }
 
 export function SkillCard({
-  category,
-  icon: Icon,
-  items,
+  skill,
 }: SkillCardProps) {
+  const Icon =
+    ICONS[skill.icon as keyof typeof ICONS] ??
+    Code2
+
   return (
     <article
       className="
-        portfolio-card
-        card-glow
         group
         relative
-        h-full
         overflow-hidden
         rounded-2xl
+        border
         p-5
+        transition-all
+        duration-300
+        hover:-translate-y-1
         sm:p-6
       "
+      style={{
+        background: '#111318',
+        borderColor: 'rgba(148,163,184,0.1)',
+      }}
     >
-      {/* Subtle ambient hover light */}
+      {/* Hover glow */}
       <div
         className="
           pointer-events-none
           absolute
-          -right-16
-          -top-16
-          h-40
-          w-40
-          rounded-full
+          inset-0
           opacity-0
-          blur-3xl
-          transition-all
-          duration-500
+          transition-opacity
+          duration-300
           group-hover:opacity-100
         "
         style={{
-          background: 'rgba(96, 165, 250, 0.09)',
+          background:
+            'radial-gradient(circle at top left, rgba(96,165,250,0.08), transparent 55%)',
         }}
       />
 
-      <div className="relative z-10">
-        {/* Category header */}
-        <div className="flex items-center gap-3">
+      <div className="relative">
+        <div className="mb-4 flex items-center gap-3">
           <div
             className="
               flex
-              h-11
-              w-11
-              shrink-0
+              h-9 w-9
               items-center
               justify-center
-              rounded-xl
-              border
-              transition-all
+              rounded-lg
+              transition-transform
               duration-300
               group-hover:scale-105
-              group-hover:border-blue-400/30
-              group-hover:bg-blue-400/[0.07]
             "
             style={{
-              background: 'rgba(255, 255, 255, 0.025)',
-              borderColor: 'rgba(148, 163, 184, 0.12)',
+              background:
+                'rgba(96,165,250,0.08)',
+
+              border:
+                '1px solid rgba(96,165,250,0.12)',
+
               color: '#60a5fa',
             }}
           >
-            <Icon
-              size={19}
-              strokeWidth={1.8}
-              className="
-                transition-transform
-                duration-300
-                group-hover:scale-110
-              "
-            />
+            <Icon size={17} />
           </div>
 
-          <div className="min-w-0">
-            <h3
-              className="text-base font-semibold sm:text-lg"
-              style={{
-                fontFamily: "'Exo 2', sans-serif",
-                color: '#f8fafc',
-              }}
-            >
-              {category}
-            </h3>
+          <h3
+            className="text-sm font-semibold"
+            style={{
+              fontFamily:
+                "'Exo 2', sans-serif",
 
-            <p
-              className="mt-0.5 text-[0.65rem]"
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                color: '#64748b',
-              }}
-            >
-              {items.length}{' '}
-              {items.length === 1
-                ? 'technology'
-                : 'technologies'}
-            </p>
-          </div>
+              color: '#f8fafc',
+            }}
+          >
+            {skill.category}
+          </h3>
         </div>
 
-        {/* Divider */}
-        <div
-          className="my-5 h-px w-full"
-          style={{
-            background:
-              'linear-gradient(90deg, rgba(148,163,184,0.14), rgba(148,163,184,0.03), transparent)',
-          }}
-        />
-
-        {/* Technologies */}
         <div className="flex flex-wrap gap-2">
-          {items.map((item) => (
-            <SkillChip key={item}>
-              {item}
+          {skill.items?.map((item) => (
+            <SkillChip
+              key={item.id ?? item.name}
+            >
+              {item.name}
             </SkillChip>
           ))}
         </div>

@@ -7,9 +7,13 @@ import { Projects } from '@/components/projects/Projects'
 import { Skills } from '@/components/skills/Skills'
 
 import { getSiteSettings } from '@/lib/payload/getSiteSettings'
+import { getSkills } from '@/lib/payload/getSkills'
 
 export default async function HomePage() {
-  const siteSettings = await getSiteSettings()
+  const [siteSettings, skills] = await Promise.all([
+    getSiteSettings(),
+    getSkills(),
+  ])
 
   return (
     <>
@@ -18,7 +22,7 @@ export default async function HomePage() {
       <main>
         <Hero siteSettings={siteSettings} />
 
-        <Skills />
+        <Skills skills={skills} />
 
         <Experience />
 
