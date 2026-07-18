@@ -1,14 +1,14 @@
 'use client'
 
-import { Cpu, GitBranch } from 'lucide-react'
+import { ArrowRight, GitBranch } from 'lucide-react'
 
 export function HeroButtons() {
   return (
-    <div className="flex flex-col xs:flex-row gap-3 justify-center lg:justify-start items-center">
+    <div className="flex flex-col xs:flex-row gap-3 justify-center lg:justify-start">
       <a
         href="#experience"
-        onClick={(e) => {
-          e.preventDefault()
+        onClick={(event) => {
+          event.preventDefault()
 
           document
             .getElementById('experience')
@@ -16,31 +16,53 @@ export function HeroButtons() {
               behavior: 'smooth',
             })
         }}
-        className="w-full xs:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 active:scale-95"
+        className="
+          group
+          w-full xs:w-auto
+          inline-flex items-center justify-center gap-2
+          px-6 py-3
+          rounded-xl
+          text-sm font-semibold
+          transition-all duration-200
+          hover:-translate-y-0.5
+          active:translate-y-0
+        "
         style={{
-          background:
-            'linear-gradient(135deg, #818cf8, #22d3ee)',
-          color: '#06060f',
+          background: '#f8fafc',
+          color: '#09090b',
           fontFamily: "'Exo 2', sans-serif",
-          fontWeight: 700,
+          boxShadow: '0 8px 30px rgba(0,0,0,0.18)',
         }}
       >
-        <Cpu size={15} />
+        View my experience
 
-        My Experience
+        <ArrowRight
+          size={15}
+          className="transition-transform duration-200 group-hover:translate-x-1"
+        />
       </a>
 
       <a
         href="https://github.com/leethor92"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full xs:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 active:scale-95"
+        className="
+          w-full xs:w-auto
+          inline-flex items-center justify-center gap-2
+          px-6 py-3
+          rounded-xl border
+          text-sm font-semibold
+          transition-all duration-200
+          hover:-translate-y-0.5
+          hover:border-blue-400/30
+          hover:bg-blue-400/[0.05]
+          active:translate-y-0
+        "
         style={{
-          border:
-            '1px solid rgba(129,140,248,0.3)',
-          color: '#f0f0fa',
+          borderColor: 'rgba(148,163,184,0.18)',
+          color: '#cbd5e1',
           fontFamily: "'Exo 2', sans-serif",
-          fontWeight: 600,
+          background: 'rgba(255,255,255,0.02)',
         }}
       >
         <GitBranch size={15} />

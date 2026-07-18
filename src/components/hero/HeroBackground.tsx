@@ -2,31 +2,52 @@ export function HeroBackground() {
   return (
     <>
       <div
-        className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 rounded-full pointer-events-none"
+        className="
+          pointer-events-none absolute
+          left-[15%] top-[15%]
+          h-72 w-72
+          sm:h-[30rem] sm:w-[30rem]
+          rounded-full
+        "
         style={{
           background:
-            'radial-gradient(circle, rgba(129,140,248,0.12) 0%, transparent 70%)',
-          animation: 'float 6s ease-in-out infinite',
+            'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 68%)',
+          animation: 'float 9s ease-in-out infinite',
         }}
       />
 
       <div
-        className="absolute bottom-1/3 right-1/4 w-56 sm:w-80 h-56 sm:h-80 rounded-full pointer-events-none"
+        className="
+          pointer-events-none absolute
+          bottom-[10%] right-[10%]
+          h-64 w-64
+          sm:h-96 sm:w-96
+          rounded-full
+        "
         style={{
           background:
-            'radial-gradient(circle, rgba(34,211,238,0.10) 0%, transparent 70%)',
-          animation: 'float 8s ease-in-out infinite reverse',
+            'radial-gradient(circle, rgba(139,92,246,0.045) 0%, transparent 70%)',
+          animation: 'float 11s ease-in-out infinite reverse',
         }}
       />
 
       <div
-        className="absolute inset-0 pointer-events-none opacity-20"
+        className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(129,140,248,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(129,140,248,0.08) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+            'linear-gradient(rgba(148,163,184,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.035) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
           maskImage:
-            'radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent)',
+            'radial-gradient(ellipse 75% 70% at 50% 45%, black, transparent)',
+        }}
+      />
+
+      {/* Bottom fade into next section */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
+        style={{
+          background:
+            'linear-gradient(to bottom, transparent, #09090b)',
         }}
       />
     </>

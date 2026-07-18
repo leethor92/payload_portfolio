@@ -12,53 +12,71 @@ export function HeroImage({
   return (
     <div className="lg:order-2 flex-shrink-0 flex items-center justify-center">
       <div
-        className="relative"
+        className="group relative"
         style={{
-          width: 'clamp(200px, 40vw, 280px)',
-          height: 'clamp(200px, 40vw, 280px)',
+          width: 'clamp(210px, 40vw, 290px)',
+          height: 'clamp(210px, 40vw, 290px)',
         }}
       >
-      {/* Accent ring */}
-      <div
-        className="absolute inset-0 rounded-full"
-        style={{
-          border: '2px solid #22d3ee',
-          boxShadow: `
-            0 0 0 2px rgba(129,140,248,0.25),
-            0 0 40px rgba(129,140,248,0.12)
-          `,
-        }}
-      />
-
-        {/* Inner background */}
+        {/* Ambient glow */}
         <div
-          className="absolute rounded-full"
+          className="
+            absolute inset-4 rounded-full
+            blur-3xl
+            transition-opacity duration-500
+            group-hover:opacity-100
+          "
           style={{
-            inset: 3,
-            background: '#06060f',
-            borderRadius: '50%',
+            background: 'rgba(96,165,250,0.12)',
+            opacity: 0.65,
           }}
         />
 
-        {/* Profile image */}
+        {/* Outer frame */}
+        <div
+          className="
+            absolute inset-0 rounded-full
+            transition-transform duration-500
+            group-hover:scale-[1.02]
+          "
+          style={{
+            padding: '1px',
+            background:
+              'linear-gradient(145deg, rgba(248,250,252,0.35), rgba(96,165,250,0.28), rgba(139,92,246,0.12), rgba(248,250,252,0.08))',
+          }}
+        >
+          <div
+            className="h-full w-full rounded-full"
+            style={{
+              background: '#09090b',
+            }}
+          />
+        </div>
+
+        {/* Image */}
         <img
           src={image}
           alt={name}
-          className="absolute rounded-full object-cover object-top"
+          className="
+            absolute rounded-full
+            object-cover object-top
+            transition-transform duration-500
+            group-hover:scale-[1.01]
+          "
           style={{
-            inset: 6,
-            width: 'calc(100% - 12px)',
-            height: 'calc(100% - 12px)',
+            inset: 5,
+            width: 'calc(100% - 10px)',
+            height: 'calc(100% - 10px)',
           }}
         />
 
-        {/* Inner shadow */}
+        {/* Inner depth */}
         <div
-          className="absolute rounded-full pointer-events-none"
+          className="pointer-events-none absolute rounded-full"
           style={{
-            inset: 6,
-            borderRadius: '50%',
-            boxShadow: 'inset 0 0 24px rgba(6,6,15,0.5)',
+            inset: 5,
+            boxShadow:
+              'inset 0 0 35px rgba(9,9,11,0.35)',
           }}
         />
       </div>

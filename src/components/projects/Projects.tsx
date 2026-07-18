@@ -3,7 +3,7 @@ import { FaGithub } from 'react-icons/fa'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { getGitHubProjects } from '@/lib/github'
 
-import { ProjectsGrid } from './ProjectsGrid'
+import { ProjectsCarousel } from './ProjectsCarousel'
 
 export async function Projects() {
   const projects = await getGitHubProjects()
@@ -20,7 +20,7 @@ export async function Projects() {
           subtitle="A live collection of personal projects and experiments from my GitHub."
         />
 
-        <ProjectsGrid projects={projects} />
+        <ProjectsCarousel projects={projects} />
 
         <div className="flex justify-center mt-10">
           <a

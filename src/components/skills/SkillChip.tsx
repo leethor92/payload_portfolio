@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react'
+
 interface SkillChipProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export function SkillChip({
@@ -7,12 +9,29 @@ export function SkillChip({
 }: SkillChipProps) {
   return (
     <span
-      className="px-2.5 py-1 rounded-md text-xs transition-colors duration-200"
+      className="
+        inline-flex
+        cursor-default
+        items-center
+        rounded-lg
+        border
+        px-2.5
+        py-1.5
+        text-xs
+        transition-all
+        duration-200
+
+        hover:-translate-y-0.5
+        hover:border-blue-400/30
+        hover:bg-blue-400/[0.07]
+        hover:text-blue-200
+        hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)]
+      "
       style={{
         fontFamily: "'JetBrains Mono', monospace",
-        background: 'rgba(129,140,248,0.07)',
-        border: '1px solid rgba(129,140,248,0.15)',
-        color: '#c0c0e0',
+        background: 'rgba(255, 255, 255, 0.025)',
+        borderColor: 'rgba(148, 163, 184, 0.1)',
+        color: '#94a3b8',
       }}
     >
       {children}
