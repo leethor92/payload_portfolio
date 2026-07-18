@@ -1,3 +1,4 @@
+import { Experience } from '@/components/experience/Expereience'
 import { Navbar } from '../../components/Navbar/Navbar'
 import { Hero } from '../../components/hero/Hero'
 import { Skills } from '@/components/skills/Skills'
@@ -17,7 +18,8 @@ export default function HomePage() {
 
       <Skills />
 
-      <section id="experience" className="min-h-screen" />
+      <Experience />
+
       <section id="projects" className="min-h-screen" />
       <section id="contact" className="min-h-screen" />
     </main>
