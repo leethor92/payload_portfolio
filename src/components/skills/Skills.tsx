@@ -10,7 +10,7 @@ export function Skills() {
     >
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          label="skill_set"
+          label="skills"
           title="What I build with"
           subtitle="Technologies I've used to build scalable web applications, cloud platforms and modern digital experiences."
         />

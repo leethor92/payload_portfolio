@@ -31,7 +31,7 @@ export function HeroButtons() {
       </a>
 
       <a
-        href="https://github.com/YOUR_USERNAME"
+        href="https://github.com/leethor92"
         target="_blank"
         rel="noopener noreferrer"
         className="w-full xs:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 active:scale-95"

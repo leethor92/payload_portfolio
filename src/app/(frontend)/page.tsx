@@ -3,6 +3,7 @@ import { Navbar } from '../../components/Navbar/Navbar'
 import { Hero } from '../../components/hero/Hero'
 import { Skills } from '@/components/skills/Skills'
 import { Projects } from '@/components/projects/Projects'
+import { Contact } from '@/components/contact/Contact'
 
 export default function HomePage() {
   return (
@@ -23,7 +24,8 @@ export default function HomePage() {
 
       <Projects />
 
-      <section id="contact" className="min-h-screen" />
+      <Contact />
+
     </main>
   )
 }

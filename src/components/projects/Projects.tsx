@@ -24,7 +24,7 @@ export async function Projects() {
 
         <div className="flex justify-center mt-10">
           <a
-            href="https://github.com/YOUR_USERNAME?tab=repositories"
+            href="https://github.com/leethor92?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
