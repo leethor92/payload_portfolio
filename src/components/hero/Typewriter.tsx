@@ -6,7 +6,6 @@ const PHRASES = [
   'Software Engineer',
   'Full Stack Developer',
   'Backend Engineer',
-  'Cloud Architect',
 ]
 
 export function Typewriter() {
