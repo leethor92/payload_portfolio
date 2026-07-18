@@ -18,7 +18,10 @@ export function StatCounter({
   useEffect(() => {
     let current = 0
 
-    const increment = Math.max(1, Math.ceil(target / 40))
+    const increment = Math.max(
+      1,
+      Math.ceil(target / 40),
+    )
 
     const timer = setInterval(() => {
       current += increment
@@ -35,22 +38,30 @@ export function StatCounter({
   }, [target])
 
   return (
-    <div className="text-center px-2">
+    <div className="px-3 sm:px-6 text-center first:pl-0 last:pr-0">
       <div
-        className="text-2xl sm:text-3xl font-extrabold gradient-text"
+        className="text-2xl sm:text-3xl font-extrabold"
         style={{
           fontFamily: "'Exo 2', sans-serif",
+          color: '#f8fafc',
         }}
       >
         {count}
-        {suffix}
+
+        <span style={{ color: '#60a5fa' }}>
+          {suffix}
+        </span>
       </div>
 
       <div
-        className="text-xs mt-0.5"
+        className="
+          mt-1
+          text-[0.65rem] sm:text-xs
+          leading-tight
+        "
         style={{
           fontFamily: "'JetBrains Mono', monospace",
-          color: '#9090b0',
+          color: '#64748b',
         }}
       >
         {label}

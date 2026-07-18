@@ -1,21 +1,41 @@
-import { SectionHeader } from '../ui/SectionHeader'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SKILLS } from '@/lib/skills'
 
-import { SkillsGrid } from './SkillsGrid'
+import { SkillCard } from './SkillCard'
 
 export function Skills() {
   return (
     <section
       id="skills"
-      className="py-16 sm:py-24 px-4 sm:px-6"
+      className="px-4 py-16 sm:px-6 sm:py-24"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader
-          label="skills"
+          label="skill_set"
           title="What I build with"
-          subtitle="Technologies I've used to build scalable web applications, cloud platforms and modern digital experiences."
+          subtitle="A broad toolkit across the full stack, from user interfaces and backend systems to infrastructure."
         />
 
-        <SkillsGrid />
+        <div
+          className="
+            mt-10
+            grid grid-cols-1
+            gap-4
+            sm:mt-12
+            sm:grid-cols-2
+            sm:gap-5
+            lg:grid-cols-3
+          "
+        >
+          {SKILLS.map((group) => (
+            <SkillCard
+              key={group.category}
+              category={group.category}
+              icon={group.icon}
+              items={group.items}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

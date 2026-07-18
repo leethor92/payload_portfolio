@@ -71,7 +71,7 @@ export function Typewriter() {
         height: '1.8em',
       }}
     >
-      <span style={{ color: '#f472b6' }}>~/</span>
+      <span style={{ color: '#60a5fa' }}>~/</span>
 
       <span>{typed}</span>
 

@@ -1,85 +1,136 @@
 'use client'
 
 import { ChevronDown } from 'lucide-react'
+
 import { HeroButtons } from './HeroButtons'
 import { HeroStats } from './HeroStats'
 import { Typewriter } from './Typewriter'
 
 export function HeroContent() {
   return (
-    <div className="lg:order-1 flex-1 text-center lg:text-left min-w-0">
-      {/* Status Badge */}
+    <div className="lg:order-1 flex-1 min-w-0 text-center lg:text-left">
+      {/* Availability */}
       <div
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs"
+        className="
+          inline-flex items-center gap-2
+          rounded-full border px-3.5 py-2
+          mb-6 text-xs
+        "
         style={{
-          background: 'rgba(34,211,238,0.08)',
-          border: '1px solid rgba(34,211,238,0.2)',
+          background: 'rgba(96,165,250,0.05)',
+          borderColor: 'rgba(96,165,250,0.16)',
           fontFamily: "'JetBrains Mono', monospace",
-          color: '#22d3ee',
+          color: '#94a3b8',
         }}
       >
-        <span
-          className="w-2 h-2 rounded-full flex-shrink-0"
-          style={{
-            background: '#22d3ee',
-            animation: 'pulse-glow 2s ease-in-out infinite',
-          }}
-        />
+        <span className="relative flex h-2 w-2">
+          <span
+            className="absolute inline-flex h-full w-full rounded-full opacity-40"
+            style={{
+              background: '#60a5fa',
+              animation: 'pulse-glow 2s ease-in-out infinite',
+            }}
+          />
+
+          <span
+            className="relative inline-flex h-2 w-2 rounded-full"
+            style={{ background: '#60a5fa' }}
+          />
+        </span>
 
         Available for new opportunities
       </div>
 
+      {/* Name */}
       <h1
-        className="font-extrabold tracking-tight mb-4 leading-none"
+        className="font-extrabold tracking-tight leading-[0.95]"
         style={{
           fontFamily: "'Exo 2', sans-serif",
-          fontSize: 'clamp(2.8rem, 8vw, 5rem)',
+          fontSize: 'clamp(3rem, 8vw, 5.4rem)',
         }}
       >
-        <span style={{ color: '#f0f0fa' }}>Lee</span>{' '}
-        <span className="gradient-text">Thornton</span>
+        <span style={{ color: '#f8fafc' }}>Lee</span>{' '}
+
+        <span className="gradient-text">
+          Thornton
+        </span>
       </h1>
 
-      <Typewriter />
+      <div className="mt-5">
+        <Typewriter />
+      </div>
 
-      <p
-        className="text-sm sm:text-base max-w-xl mb-8 leading-relaxed mx-auto lg:mx-0"
+      {/* Positioning */}
+      <h2
+        className="
+          mx-auto mt-5 max-w-2xl
+          text-xl sm:text-2xl
+          font-semibold leading-snug
+          lg:mx-0
+        "
         style={{
-          color: '#b0b0cc',
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Exo 2', sans-serif",
+          color: '#e2e8f0',
         }}
       >
-        Software Engineer with 7 years experience building scalable web
-        applications and integration platforms. Strong background in backend
-        systems, API design, and modern JavaScript frameworks, with experience
-        modernising legacy platforms and delivering high-volume cloud solutions.
+        Building scalable software from backend systems to modern web
+        platforms.
+      </h2>
+
+      <p
+        className="
+          mx-auto mt-4 max-w-xl
+          text-sm sm:text-base
+          leading-relaxed
+          lg:mx-0
+        "
+        style={{
+          color: '#94a3b8',
+        }}
+      >
+        Full-stack software engineer with 7+ years of experience building
+        production applications, integration platforms and cloud-based
+        systems across React, Next.js, Ruby on Rails, Node.js and AWS.
       </p>
 
-      <HeroButtons />
+      <div className="mt-8">
+        <HeroButtons />
+      </div>
 
-        <div className="mt-10">
-            <HeroStats />
+      <div className="mt-10 sm:mt-12">
+        <HeroStats />
 
-            <div className="flex justify-center mt-8">
-                <button
-                type="button"
-                onClick={() =>
-                    document.getElementById('skills')?.scrollIntoView({
-                    behavior: 'smooth',
-                    })
-                }
-                className="transition-transform duration-300 hover:translate-y-1"
-                >
-                <ChevronDown
-                    size={20}
-                    style={{
-                    color: '#9090b0',
-                    animation: 'float 3s ease-in-out infinite',
-                    }}
-                />
-                </button>
-            </div>
+        <div className="mt-8 flex justify-center">
+          <button
+            type="button"
+            onClick={() =>
+              document.getElementById('skills')?.scrollIntoView({
+                behavior: 'smooth',
+              })
+            }
+            aria-label="Scroll to skills"
+            className="
+              flex h-9 w-9 items-center justify-center
+              rounded-full border
+              transition-all duration-300
+              hover:translate-y-1
+              hover:border-blue-400/30
+              hover:bg-blue-400/[0.05]
+            "
+            style={{
+              borderColor: 'rgba(148,163,184,0.12)',
+              color: '#64748b',
+            }}
+          >
+            <ChevronDown
+              size={18}
+              style={{
+                animation: 'float 3s ease-in-out infinite',
+              }}
+            />
+          </button>
         </div>
+      </div>
     </div>
   )
 }
