@@ -1,35 +1,33 @@
-import { Experience } from '@/components/experience/Expereience'
-import { Navbar } from '@/components/Navbar/Navbar'
-import { Hero } from '@/components/hero/Hero'
-import { Skills } from '@/components/skills/Skills'
-import { Projects } from '@/components/projects/Projects'
 import { Contact } from '@/components/contact/Contact'
+import { Experience } from '@/components/experience/Experience'
 import { Footer } from '@/components/footer/Footer'
+import { Hero } from '@/components/hero/Hero'
+import { Navbar } from '@/components/navbar/Navbar'
+import { Projects } from '@/components/projects/Projects'
+import { Skills } from '@/components/skills/Skills'
 
+import { getSiteSettings } from '@/lib/payload/getSiteSettings'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const siteSettings = await getSiteSettings()
+
   return (
-    <main
-      className="noise-bg"
-      style={{
-        background: '#06060f',
-        minHeight: '100vh',
-      }}
-    >
+    <>
       <Navbar />
 
-      <Hero />
+      <main>
+        <Hero siteSettings={siteSettings} />
 
-      <Skills />
+        <Skills />
 
-      <Experience />
+        <Experience />
 
-      <Projects />
+        <Projects />
 
-      <Contact />
+        <Contact />
+      </main>
 
       <Footer />
-
-    </main>
+    </>
   )
 }

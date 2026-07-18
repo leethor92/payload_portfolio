@@ -1,27 +1,42 @@
 'use client'
 
+import type { SiteSetting } from '@/types/payload-types'
+
 import { HeroBackground } from './HeroBackground'
 import { HeroContent } from './HeroContent'
 import { HeroImage } from './HeroImage'
 
-import { ChevronDown } from 'lucide-react'
+interface HeroProps {
+  siteSettings: SiteSetting
+}
 
-export function Hero() {
+export function Hero({
+  siteSettings,
+}: HeroProps) {
   return (
     <section
-        id="about"
-        className="relative min-h-screen flex flex-col justify-center pt-16 overflow-hidden"
-        >
-        <HeroBackground />
+      id="about"
+      className="
+        relative
+        flex min-h-screen
+        flex-col justify-center
+        overflow-hidden
+        pt-16
+      "
+    >
+      <HeroBackground />
 
-        <div className="relative z-10 flex-1 flex items-center">
-            <div className="px-4 sm:px-6 max-w-5xl mx-auto w-full">
-            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
-                <HeroImage />
-                <HeroContent />
-            </div>
-            </div>
+      <div className="relative z-10 flex flex-1 items-center">
+        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
+          <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-20">
+            <HeroImage />
+
+            <HeroContent
+              siteSettings={siteSettings}
+            />
+          </div>
         </div>
+      </div>
     </section>
   )
 }

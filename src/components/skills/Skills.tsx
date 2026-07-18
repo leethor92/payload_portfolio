@@ -11,7 +11,7 @@ export function Skills() {
     >
       <div className="mx-auto max-w-6xl">
         <SectionHeader
-          label="skill_set"
+          label="Skills"
           title="What I build with"
           subtitle="A broad toolkit across the full stack, from user interfaces and backend systems to infrastructure."
         />

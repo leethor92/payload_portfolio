@@ -2,36 +2,48 @@
 
 import { StatCounter } from './StatCounter'
 
-export function HeroStats() {
+interface HeroStatsProps {
+  yearsExperience: number
+  sitesModernised?: number | null
+  technologiesUsed?: number | null
+}
+
+export function HeroStats({
+  yearsExperience,
+  sitesModernised,
+  technologiesUsed,
+}: HeroStatsProps) {
   return (
     <div
       className="
-        grid grid-cols-3
-        divide-x
-        max-w-xl
-        mx-auto lg:mx-0
+        flex flex-wrap
+        justify-center
+        gap-x-6 gap-y-4
+        sm:gap-x-10
+        lg:justify-start
       "
-      style={{
-        borderColor: 'rgba(148,163,184,0.1)',
-      }}
     >
       <StatCounter
-        target={7}
+        target={yearsExperience}
         suffix="+"
         label="Years Experience"
       />
 
-      <StatCounter
-        target={30}
-        suffix="+"
-        label="Technologies"
-      />
+      {sitesModernised != null && (
+        <StatCounter
+          target={sitesModernised}
+          suffix="+"
+          label="Websites Modernised"
+        />
+      )}
 
-      <StatCounter
-        target={18}
-        suffix="+"
-        label="Sites Modernised"
-      />
+      {technologiesUsed != null && (
+        <StatCounter
+          target={technologiesUsed}
+          suffix="+"
+          label="Technologies Used"
+        />
+      )}
     </div>
   )
 }
