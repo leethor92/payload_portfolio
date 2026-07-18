@@ -62,12 +62,21 @@ export function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? 'rgba(6,6,15,0.88)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+        background: scrolled
+          ? 'rgba(9, 9, 11, 0.78)'
+          : 'transparent',
+
+        backdropFilter: scrolled
+          ? 'blur(20px) saturate(140%)'
+          : 'none',
+
         borderBottom: scrolled
-          ? '1px solid rgba(129,140,248,0.12)'
+          ? '1px solid rgba(148,163,184,0.1)'
           : '1px solid transparent',
+
+        boxShadow: scrolled
+          ? '0 8px 32px rgba(0,0,0,0.16)'
+          : 'none',
       }}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
