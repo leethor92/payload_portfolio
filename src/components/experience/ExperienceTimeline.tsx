@@ -1,50 +1,92 @@
-import { EXPERIENCE } from '@/lib/experience'
+import type { Experience } from '@/types/payload-types'
 
 import { ExperienceCard } from './ExperienceCard'
 import { ExperienceProgress } from './ExperienceProgress'
 
-export function ExperienceTimeline() {
+interface ExperienceTimelineProps {
+  experiences: Experience[]
+}
+
+export function ExperienceTimeline({
+  experiences,
+}: ExperienceTimelineProps) {
   return (
     <ExperienceProgress>
       <div className="relative mt-12 sm:mt-16">
-        {/* Inactive timeline */}
+        {/* Base timeline track */}
         <div
-          className="absolute left-5 top-0 bottom-0 w-px md:left-1/2 md:-translate-x-1/2"
+          className="
+            absolute
+            left-5
+            top-0
+            bottom-0
+            w-px
+            md:left-1/2
+            md:-translate-x-1/2
+          "
           style={{
-            background: 'rgba(148,163,184,0.12)',
+            background:
+              'linear-gradient(to bottom, transparent, rgba(148,163,184,0.18) 8%, rgba(148,163,184,0.18) 92%, transparent)',
           }}
         />
 
-        {/* Timeline scroll progress */}
+        {/* Animated scroll progress */}
         <div
-          className="absolute left-5 top-0 w-px md:left-1/2 md:-translate-x-1/2"
+          className="
+            absolute
+            left-5
+            top-0
+            w-px
+            md:left-1/2
+            md:-translate-x-1/2
+          "
           style={{
             height: 'var(--timeline-progress)',
+
             background:
-              'linear-gradient(to bottom, #60a5fa, #8b5cf6)',
-            boxShadow: '0 0 12px rgba(96,165,250,0.35)',
-            transition: 'height 80ms linear',
+              'linear-gradient(to bottom, #60a5fa, #818cf8)',
+
+            boxShadow:
+              '0 0 10px rgba(96,165,250,0.35)',
+
+            transition:
+              'height 100ms linear',
           }}
         />
 
         <div className="space-y-10 md:space-y-14">
-          {EXPERIENCE.map((experience, index) => {
+          {experiences.map((experience, index) => {
             const isLeft = index % 2 === 0
 
             return (
               <div
-                key={`${experience.company}-${experience.period}`}
-                className="relative grid grid-cols-[40px_1fr] md:grid-cols-[1fr_72px_1fr]"
+                key={experience.id}
+                className="
+                  relative
+                  grid
+                  grid-cols-[40px_1fr]
+                  md:grid-cols-[1fr_72px_1fr]
+                "
               >
                 {/* Mobile timeline node */}
                 <div className="relative flex justify-center md:hidden">
                   <div
-                    className="relative z-10 mt-8 h-3 w-3 rounded-full"
+                    className="
+                      relative
+                      z-10
+                      mt-8
+                      h-3
+                      w-3
+                      rounded-full
+                    "
                     style={{
                       background: '#09090b',
-                      border: '2px solid #60a5fa',
+
+                      border:
+                        '2px solid #60a5fa',
+
                       boxShadow:
-                        '0 0 0 5px #09090b, 0 0 0 6px rgba(96,165,250,0.12)',
+                        '0 0 0 5px rgba(96,165,250,0.08)',
                     }}
                   />
                 </div>
@@ -53,19 +95,38 @@ export function ExperienceTimeline() {
                 <div className="hidden md:block">
                   {isLeft && (
                     <ExperienceCard
-                      {...experience}
+                      experience={experience}
                       alignment="right"
                     />
                   )}
                 </div>
 
                 {/* Desktop timeline node */}
-                <div className="relative hidden md:flex justify-center">
+                <div
+                  className="
+                    relative
+                    hidden
+                    justify-center
+                    md:flex
+                  "
+                >
                   <div
-                    className="relative z-10 mt-9 h-4 w-4 rounded-full"
+                    className="
+                      relative
+                      z-10
+                      mt-9
+                      h-4
+                      w-4
+                      rounded-full
+                      transition-all
+                      duration-300
+                    "
                     style={{
                       background: '#09090b',
-                      border: '2px solid #60a5fa',
+
+                      border:
+                        '2px solid #60a5fa',
+
                       boxShadow:
                         '0 0 0 6px #09090b, 0 0 0 7px rgba(96,165,250,0.12)',
                     }}
@@ -76,15 +137,17 @@ export function ExperienceTimeline() {
                 <div className="hidden md:block">
                   {!isLeft && (
                     <ExperienceCard
-                      {...experience}
+                      experience={experience}
                       alignment="left"
                     />
                   )}
                 </div>
 
                 {/* Mobile card */}
-                <div className="md:hidden pl-4">
-                  <ExperienceCard {...experience} />
+                <div className="pl-4 md:hidden">
+                  <ExperienceCard
+                    experience={experience}
+                  />
                 </div>
               </div>
             )

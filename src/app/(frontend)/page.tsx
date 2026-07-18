@@ -8,11 +8,18 @@ import { Skills } from '@/components/skills/Skills'
 
 import { getSiteSettings } from '@/lib/payload/getSiteSettings'
 import { getSkills } from '@/lib/payload/getSkills'
+import { getExperiences } from '@/lib/payload/getExperiences'
+
 
 export default async function HomePage() {
-  const [siteSettings, skills] = await Promise.all([
+  const [
+    siteSettings,
+    skills,
+    experiences,
+  ] = await Promise.all([
     getSiteSettings(),
     getSkills(),
+    getExperiences(),
   ])
 
   return (
@@ -24,7 +31,7 @@ export default async function HomePage() {
 
         <Skills skills={skills} />
 
-        <Experience />
+        <Experience experiences={experiences} />
 
         <Projects />
 

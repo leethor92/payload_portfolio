@@ -9,11 +9,13 @@ export function ExperienceTags({
 }: ExperienceTagsProps) {
   return (
     <div className="flex flex-wrap gap-2">
-      {technologies.map((technology) => (
-        <SkillChip key={technology}>
-          {technology}
-        </SkillChip>
-      ))}
+      {technologies.map(
+        (technology) => (
+          <SkillChip key={technology}>
+            {technology}
+          </SkillChip>
+        ),
+      )}
     </div>
   )
 }

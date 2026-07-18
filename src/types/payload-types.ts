@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     skills: Skill;
+    experiences: Experience;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     skills: SkillsSelect<false> | SkillsSelect<true>;
+    experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -188,6 +190,33 @@ export interface Skill {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences".
+ */
+export interface Experience {
+  id: number;
+  company: string;
+  role: string;
+  location: string;
+  startDate: string;
+  /**
+   * Leave empty for your current role.
+   */
+  endDate?: string | null;
+  logo: number | Media;
+  achievements: {
+    text: string;
+    id?: string | null;
+  }[];
+  stack: {
+    name: string;
+    id?: string | null;
+  }[];
+  order: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -221,6 +250,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'skills';
         value: number | Skill;
+      } | null)
+    | ({
+        relationTo: 'experiences';
+        value: number | Experience;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -312,6 +345,33 @@ export interface SkillsSelect<T extends boolean = true> {
   category?: T;
   icon?: T;
   items?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences_select".
+ */
+export interface ExperiencesSelect<T extends boolean = true> {
+  company?: T;
+  role?: T;
+  location?: T;
+  startDate?: T;
+  endDate?: T;
+  logo?: T;
+  achievements?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  stack?:
     | T
     | {
         name?: T;

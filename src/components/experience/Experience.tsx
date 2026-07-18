@@ -1,8 +1,16 @@
+import type { Experience as ExperienceType } from '@/types/payload-types'
+
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 import { ExperienceTimeline } from './ExperienceTimeline'
 
-export function Experience() {
+interface ExperienceProps {
+  experiences: ExperienceType[]
+}
+
+export function Experience({
+  experiences,
+}: ExperienceProps) {
   return (
     <section
       id="experience"
@@ -15,7 +23,9 @@ export function Experience() {
           subtitle="Building and modernising software across product platforms, cloud infrastructure and large-scale web applications."
         />
 
-        <ExperienceTimeline />
+        <ExperienceTimeline
+          experiences={experiences}
+        />
       </div>
     </section>
   )
