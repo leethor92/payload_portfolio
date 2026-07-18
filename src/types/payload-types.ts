@@ -433,8 +433,10 @@ export interface SiteSetting {
   heroHeadline: string;
   heroDescription: string;
   email: string;
+  location?: string | null;
   github?: string | null;
   linkedin?: string | null;
+  resume?: (number | null) | Media;
   yearsExperience: number;
   sitesModernised?: number | null;
   technologiesUsed?: number | null;
@@ -452,8 +454,10 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   heroHeadline?: T;
   heroDescription?: T;
   email?: T;
+  location?: T;
   github?: T;
   linkedin?: T;
+  resume?: T;
   yearsExperience?: T;
   sitesModernised?: T;
   technologiesUsed?: T;

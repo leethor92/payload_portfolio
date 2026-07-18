@@ -39,20 +39,37 @@ export const SiteSettings: GlobalConfig = {
       type: 'textarea',
       required: true,
     },
+
+    // Contact
     {
       name: 'email',
       type: 'email',
       required: true,
     },
     {
+      name: 'location',
+      type: 'text',
+      defaultValue: 'Melbourne, Australia',
+    },
+    {
       name: 'github',
+      label: 'GitHub URL',
       type: 'text',
       defaultValue: 'https://github.com/leethor92',
     },
     {
       name: 'linkedin',
+      label: 'LinkedIn URL',
       type: 'text',
     },
+    {
+      name: 'resume',
+      label: 'CV / Resume',
+      type: 'upload',
+      relationTo: 'media',
+    },
+
+    // Stats
     {
       name: 'yearsExperience',
       type: 'number',

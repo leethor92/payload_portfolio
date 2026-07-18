@@ -24,7 +24,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar siteSettings={siteSettings} />
 
       <main>
         <Hero siteSettings={siteSettings} />
@@ -35,10 +35,10 @@ export default async function HomePage() {
 
         <Projects />
 
-        <Contact />
+        <Contact siteSettings={siteSettings} />
       </main>
 
-      <Footer />
+      <Footer siteSettings={siteSettings} />
     </>
   )
 }

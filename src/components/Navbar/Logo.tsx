@@ -1,6 +1,20 @@
 'use client'
 
-export function Logo() {
+interface LogoProps {
+  name: string
+}
+
+export function Logo({
+  name,
+}: LogoProps) {
+  const initials = name
+    .split(' ')
+    .filter(Boolean)
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase()
+
   const handleClick = () => {
     window.scrollTo({
       top: 0,
@@ -12,89 +26,51 @@ export function Logo() {
     <button
       type="button"
       onClick={handleClick}
-      aria-label="Scroll to top"
       className="
         group
-        flex items-center gap-3
-        rounded-lg
-        outline-none
+        flex items-center gap-2
       "
+      aria-label="Scroll to top"
     >
       <div
         className="
-          relative
           flex h-8 w-8
-          shrink-0
+          flex-shrink-0
           items-center justify-center
-          overflow-hidden
           rounded-lg
-          border
-          transition-all duration-300
-
-          group-hover:-translate-y-0.5
-          group-hover:border-blue-400/35
-          group-hover:bg-blue-400/[0.07]
+          text-xs font-bold
+          transition-transform duration-200
+          group-hover:scale-105
         "
         style={{
-          background: 'rgba(255,255,255,0.035)',
-          borderColor: 'rgba(148,163,184,0.16)',
+          background:
+            'linear-gradient(135deg, #818cf8, #22d3ee)',
+
+          fontFamily:
+            "'Exo 2', sans-serif",
+
+          color: '#06060f',
         }}
       >
-        <span
-          className="
-            relative z-10
-            text-xs font-bold
-            transition-colors duration-300
-            group-hover:text-blue-300
-          "
-          style={{
-            fontFamily: "'Exo 2', sans-serif",
-            color: '#f8fafc',
-          }}
-        >
-          LT
-        </span>
-
-        <div
-          className="
-            absolute inset-x-1 bottom-0
-            h-px
-            scale-x-0
-            transition-transform duration-300
-            group-hover:scale-x-100
-          "
-          style={{
-            background: '#60a5fa',
-          }}
-        />
+        {initials}
       </div>
 
-      <div className="hidden text-left sm:block">
-        <span
-          className="
-            block text-sm font-semibold
-            leading-none
-            transition-colors duration-200
-            group-hover:text-white
-          "
-          style={{
-            fontFamily: "'Exo 2', sans-serif",
-            color: '#e2e8f0',
-          }}
-        >
-          Lee Thornton
-        </span>
+      <span
+        className="
+          hidden
+          text-sm font-semibold
+          transition-colors duration-200
+          sm:block
+        "
+        style={{
+          fontFamily:
+            "'Exo 2', sans-serif",
 
-        <span
-          className="mt-1 block text-[0.6rem]"
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            color: '#64748b',
-          }}
-        >
-          Software Engineer
-        </span>
-      </div>
+          color: '#f0f0fa',
+        }}
+      >
+        {name}
+      </span>
     </button>
   )
 }

@@ -1,8 +1,16 @@
+import type { SiteSetting } from '@/types/payload-types'
+
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 import { ContactActions } from './ContactActions'
 
-export function Contact() {
+interface ContactProps {
+  siteSettings: SiteSetting
+}
+
+export function Contact({
+  siteSettings,
+}: ContactProps) {
   return (
     <section
       id="contact"
@@ -100,7 +108,11 @@ export function Contact() {
               problem, I&apos;m always interested in meaningful work.
             </p>
 
-            <ContactActions />
+            <ContactActions
+              email={siteSettings.email}
+              github={siteSettings.github}
+              linkedin={siteSettings.linkedin}
+            />
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import { ArrowUpRight } from 'lucide-react'
 
-interface ResumeButtonProps {
+interface HireButtonProps {
   onNavigate: (href: string) => void
 }
 
-export function ResumeButton({
+export function HireButton({
   onNavigate,
-}: ResumeButtonProps) {
+}: HireButtonProps) {
   return (
     <a
       href="#contact"

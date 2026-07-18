@@ -3,21 +3,61 @@ import {
   FaLinkedin,
 } from 'react-icons/fa'
 
-const currentYear = new Date().getFullYear()
+import type { SiteSetting } from '@/types/payload-types'
 
-export function Footer() {
+interface FooterProps {
+  siteSettings: SiteSetting
+}
+
+export function Footer({
+  siteSettings,
+}: FooterProps) {
+  const currentYear =
+    new Date().getFullYear()
+
+  const socialLinks = [
+    siteSettings.linkedin
+      ? {
+          label: 'LinkedIn',
+          href: siteSettings.linkedin,
+          icon: FaLinkedin,
+        }
+      : null,
+
+    siteSettings.github
+      ? {
+          label: 'GitHub',
+          href: siteSettings.github,
+          icon: FaGithub,
+        }
+      : null,
+  ].filter(
+    (
+      link,
+    ): link is NonNullable<typeof link> =>
+      link !== null,
+  )
+
   return (
     <footer
-      className="border-t px-4 py-7 sm:px-6"
+      className="
+        border-t
+        px-4 py-8
+        sm:px-6
+      "
       style={{
-        borderColor: 'rgba(148,163,184,0.08)',
+        borderColor:
+          'rgba(148,163,184,0.08)',
       }}
     >
       <div
         className="
-          mx-auto flex max-w-6xl
-          flex-col items-center
-          justify-between gap-4
+          mx-auto
+          flex max-w-6xl
+          flex-col
+          items-center
+          justify-between
+          gap-5
           sm:flex-row
         "
       >
@@ -25,71 +65,68 @@ export function Footer() {
           <p
             className="text-sm font-semibold"
             style={{
-              fontFamily: "'Exo 2', sans-serif",
-              color: '#cbd5e1',
+              fontFamily:
+                "'Exo 2', sans-serif",
+
+              color: '#f8fafc',
             }}
           >
-            Lee Thornton
+            {siteSettings.name}
           </p>
 
           <p
-            className="mt-0.5 text-[0.65rem]"
+            className="mt-1 text-xs"
             style={{
               fontFamily:
                 "'JetBrains Mono', monospace",
+
               color: '#64748b',
             }}
           >
-            Software Engineer
+            {siteSettings.role}
           </p>
         </div>
 
+        <div className="flex items-center gap-4">
+          {socialLinks.map(
+            ({
+              label,
+              href,
+              icon: Icon,
+            }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="
+                  transition-all
+                  duration-200
+                  hover:-translate-y-0.5
+                "
+                style={{
+                  color: '#64748b',
+                }}
+              >
+                <Icon size={17} />
+              </a>
+            ),
+          )}
+        </div>
+
         <p
-          className="text-center text-[0.65rem]"
+          className="text-xs"
           style={{
             fontFamily:
               "'JetBrains Mono', monospace",
-            color: '#475569',
+
+            color: '#64748b',
           }}
         >
-          © {currentYear} Lee Thornton
-          <span className="mx-2 opacity-40">•</span>
-          Built with Next.js &amp; Payload CMS
+          © {currentYear}{' '}
+          {siteSettings.name}
         </p>
-
-        <div className="flex items-center gap-1">
-          <a
-            href="https://github.com/leethor92"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="
-              rounded-lg p-2
-              transition-all duration-200
-              hover:bg-white/[0.04]
-              hover:text-blue-300
-            "
-            style={{ color: '#64748b' }}
-          >
-            <FaGithub size={16} />
-          </a>
-
-          <a
-            href="YOUR_LINKEDIN_URL"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="
-              rounded-lg p-2
-              transition-all duration-200
-              hover:bg-white/[0.04]
-              hover:text-blue-300
-            "
-            style={{ color: '#64748b' }}
-          >
-            <FaLinkedin size={16} />
-          </a>
-        </div>
       </div>
     </footer>
   )
