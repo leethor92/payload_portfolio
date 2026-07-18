@@ -1,3 +1,5 @@
+import { ArrowUpRight } from 'lucide-react'
+
 interface ResumeButtonProps {
   onNavigate: (href: string) => void
 }
@@ -12,15 +14,37 @@ export function ResumeButton({
         event.preventDefault()
         onNavigate('#contact')
       }}
-      className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:opacity-90"
+      className="
+        group
+        hidden md:inline-flex
+        items-center gap-1.5
+        rounded-lg
+        px-4 py-2
+        text-sm font-semibold
+        transition-all duration-200
+
+        hover:-translate-y-0.5
+        hover:bg-white
+        active:translate-y-0
+      "
       style={{
-        background: 'linear-gradient(135deg, #818cf8, #22d3ee)',
-        color: '#06060f',
+        background: '#f8fafc',
+        color: '#09090b',
         fontFamily: "'Exo 2', sans-serif",
-        fontWeight: 600,
+        boxShadow:
+          '0 6px 24px rgba(0,0,0,0.16)',
       }}
     >
-      Hire me
+      Let&apos;s talk
+
+      <ArrowUpRight
+        size={14}
+        className="
+          transition-transform duration-200
+          group-hover:translate-x-0.5
+          group-hover:-translate-y-0.5
+        "
+      />
     </a>
   )
 }
