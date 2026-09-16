@@ -2,6 +2,8 @@
 
 A full-stack developer portfolio built with **Next.js, TypeScript and Payload CMS**, designed to showcase my professional experience, technical skills and software projects.
 
+**[View Live Portfolio](https://leethornton.vercel.app)**
+
 Rather than building the portfolio as a static site, I wanted the project itself to demonstrate some of the technologies and architectural approaches I work with professionally. Portfolio content is managed through Payload CMS, backed by PostgreSQL, while project information is retrieved dynamically from GitHub.
 
 ## Features
